@@ -8,17 +8,27 @@ import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity {
-    public Button num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,ponto,igual,mais,menos,mult,div,limpar;
-    public EditText tela, concatenar;
-    public double numero1, numero2, resultado;
+    public Button num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,ponto,igual,mais,menos,mult,div,limpar,sair;
+    public EditText tela,concatenar;
+    public double resultado;
     public String operador;
+    public double numero1;
+    public double numero2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        limpar = (Button) findViewById(R.id.limpar);
+        inicializando();
+        eventos();
+
+    }
+
+    private void inicializando(){
+        tela = (EditText) findViewById(R.id.tela);
+
+
         num0 = (Button) findViewById(R.id.num0);
         num1 = (Button) findViewById(R.id.num1);
         num2 = (Button) findViewById(R.id.num2);
@@ -29,14 +39,18 @@ public class MainActivity extends AppCompatActivity {
         num7 = (Button) findViewById(R.id.num7);
         num8 = (Button) findViewById(R.id.num8);
         num9 = (Button) findViewById(R.id.num9);
-        ponto = (Button) findViewById(R.id.ponto);
-        igual = (Button) findViewById(R.id.igual);
+
         mais = (Button) findViewById(R.id.mais);
         menos = (Button) findViewById(R.id.menos);
         mult = (Button) findViewById(R.id.mult);
         div = (Button) findViewById(R.id.div);
-        tela = (EditText) findViewById(R.id.tela);
 
+        igual = (Button) findViewById(R.id.igual);
+        ponto = (Button) findViewById(R.id.ponto);
+        limpar = (Button) findViewById(R.id.limpar);
+
+    }
+    private void eventos(){
         num0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     if (numero2 != 0){
                         resultado = numero1 / numero2;
                     }else {
-                        tela.setText("----");
+                        tela.setText("");
                     }
                 }
                 tela.setText(String.valueOf(resultado));
@@ -205,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }
+
+
 }
